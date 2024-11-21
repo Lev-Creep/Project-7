@@ -1,33 +1,117 @@
-# Gradle files
-.gradle/
-build/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Go Out With Me?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(189, 225, 122);
+            margin: 0;
+            overflow: hidden;
+        }
 
-# Local configuration file (sdk path, etc)
-local.properties
+        .container {
+            text-align: center;
+        }
 
-# Log/OS Files
-*.log
+        .header_text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            margin: 10px 0;
+        }
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
+        .gif_container img {
+            max-width: 100%;
+            height: auto;
+        }
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+        .buttons {
+            margin-top: 20px;
+        }
 
-# Keystore files
-*.jks
-*.keystore
+        .btn {
+            background-color: #ffffff;
+            color: rgb(233, 48, 48);
+            padding: 15px 32px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+        .btn:hover {
+            background-color: rgb(233, 48, 48);
+            color: white;
+            transform: scale(1.1);
+        }
 
-# Android Profiling
-*.hprof
+        #noButton {
+            position: absolute;
+            transition: top 0.5s, left 0.5s;
+        }
+
+        .yes-container {
+            display: none;
+            text-align: center;
+        }
+
+        .yes-container.active {
+            display: block;
+        }
+
+        .yes-header {
+            font-family: 'Nunito', sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div>
+            <h1 class="header_text">Do you wanna go out with me?</h1>
+            <h1 class="header_text">Are you free tomorrow?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" 
+                 alt="Cute animated illustration">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="showYesPage()">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div class="yes-container" id="yesContainer">
+        <div>
+            <h1 class="yes-header">Hurrayyyy!!</h1>
+        </div>
+        <div class="gif_container">
+            <img src="https://media0.giphy.com/media/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Celebration GIF">
+        </div>
+    </div>
+
+    <script>
+        function showYesPage() {
+            document.getElementById("mainContainer").style.display = "none";
+            document.getElementById("yesContainer").classList.add("active");
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
